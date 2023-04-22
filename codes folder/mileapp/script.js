@@ -1,7 +1,8 @@
 document.getElementById("button").addEventListener('click',()=>{
     let inputValue = document.getElementById('inputName').value 
     let details = document.getElementById("details")
-    details.innerHTML = ""
+//    details.innerHTML = ""
+    let input = document.getElementById("myInput");
     fetch(`https:www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`)
         .then(response => response.json())
         .then(data=> {

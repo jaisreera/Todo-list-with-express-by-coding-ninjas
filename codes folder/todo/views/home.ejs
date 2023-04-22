@@ -1,0 +1,104 @@
+<!--  ejs section -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/9dde1b578b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/home.css">
+</head> 
+<body>
+    <!-- heading section -->
+    <div id="cen"><h1 id="head" ><span style="color: #444659;">TO_</span><span style="color: #c4c3c3;">_DO</span><span style="color: #ff6262; margin-top: 20px;">.</span></h1></div>
+    
+
+    <div id="b1"></div>
+	<div id="b2"></div>
+   
+
+    
+    <div id="main">
+<!--        form section , which has description, date, catagory -->
+    <div class="div d1">
+
+    <form action="created/create-todo" method="POST" id="frm">
+        <input type="text" name="des" required id="t" placeholder="enter todo description">
+
+        <hr >
+
+        <span>
+        <select name="cat" id="cat" required >
+            <option value='' selected disabled hidden ></option>
+            <option value="Personal" >Personal</option>
+            <option value="Work" >Work</option>
+            <option value="cleaning">cleaning</option>
+            <option value="Others">Others</option>
+          </select>
+
+        <input type='date' name="date" id="dat" required >  
+        </span>
+
+
+
+
+
+
+
+        <hr>
+       
+        <button type="submit"  id="btn1"><i class="far fa-plus-square"></i></button>
+     
+          
+        </form>            
+          
+    </div>
+
+
+
+    <!--    section , which gives output for todo (description, date, catagory)   -->
+    <div class="div d2">    
+        <ul>
+            <form action="/kamlesh/delete-todo" method="GET" id="frm">
+
+                <div id="dlt">
+                <button type="submit" id="btn" onclick="confirmation()"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                     
+                <% for(let i of to_do){ %>
+                    <li id="item">    
+                        
+                        <input type="checkbox" name="check" id="checkBox" value="<%= i._id %>" >  
+                        <div id="txt-date">
+                            
+                        <p  id="t1"><%= i.des %></p> 
+                        <p id="d1"><i class="far fa-calendar-alt"></i><%= i.date %></p>
+                        </div>
+                        <p id="cat1"> <%= i.cat %></p>  
+                              
+                        
+                            <!-- <a href="/delete-todo/?des=<%= i.des %>"><button>del</button></a> -->
+                            
+                           
+                        </li> <hr>
+                    
+         
+                    <% } %>
+                
+                </form>
+        </ul>
+
+        
+    
+
+    
+    </div></div>
+    <script src="/js/home.js">
+    
+    </script>
+</body>
+</html>
